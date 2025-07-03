@@ -1,0 +1,196 @@
+/* CyclePage.css */
+
+/* Variables CSS */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --accent-color: #28a745;
+    --background-light: #f8f9fa;
+    --background-dark: #343a40;
+    --text-color: #343a40;
+    --text-light: #f8f9fa;
+    --card-bg: #ffffff;
+    --border-color: #e9ecef;
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --transition-speed: 0.3s ease;
+}
+
+/* Réinitialisation de base - *Ces règles sont souvent dans un fichier CSS global (ex: index.css) ou gérées par une bibliothèque UI Reset* */
+/* Pour ce composant, nous nous concentrons sur les styles spécifiques à la page */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Page specific hero section */
+.page-hero {
+    background: linear-gradient(135deg, #f0e6fa, #d1c4e9);
+    padding: 60px 0;
+    text-align: center;
+    color: var(--text-color);
+}
+
+.page-hero h2 {
+    font-size: 2.8em;
+    margin-bottom: 15px;
+    color: #673ab7;
+}
+
+.page-hero p {
+    font-size: 1.1em;
+    opacity: 0.9;
+}
+
+/* Content section */
+.content-section {
+    padding: 40px 0;
+    background-color: var(--background-light);
+    flex-grow: 1; /* Permet à cette section de prendre l'espace disponible */
+}
+
+.cycle-calculator-card {
+    background-color: var(--card-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: var(--shadow-light);
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.cycle-calculator-card h3 {
+    text-align: center;
+    font-size: 2em;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--text-color);
+}
+
+.form-group input[type="date"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1em;
+    color: var(--text-color);
+    transition: border-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.form-group input[type="date"]:focus,
+.form-group input[type="number"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25);
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all var(--transition-speed);
+    text-align: center;
+    border: none;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 123, 255, 0.4);
+}
+
+.cycle-calculator-card .btn-primary {
+    width: 100%;
+    margin-top: 20px;
+    padding: 15px;
+    font-size: 1.1em;
+}
+
+.result-display {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #e6f7ff;
+    border: 1px solid #b3e0ff;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--primary-color);
+    text-align: center;
+    min-height: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    opacity: 0; /* Initialement caché pour l'animation */
+}
+
+.result-display.show {
+    animation: fadeInScale 0.4s ease-out forwards;
+}
+
+.info-box {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f0f7ff;
+    border: 1px solid #d4e7ff;
+    border-radius: 8px;
+    text-align: left;
+    color: var(--secondary-color);
+}
+
+.info-box h4 {
+    color: var(--primary-color);
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+/* Animations */
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    /* Note: Le header/nav est géré par le composant Header, donc ces règles devraient idéalement être là-bas */
+    /* .main-nav ul {
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    .main-nav ul li {
+        margin: 10px 0;
+    }
+    .main-header .container {
+        flex-direction: column;
+    } */
+}
+@media (max-width: 768px) {
+    .cycle-calculator-card {
+        padding: 25px;
+    }
+    .page-hero h2 {
+        font-size: 2.2em;
+    }
+}

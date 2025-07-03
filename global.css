@@ -1,0 +1,626 @@
+/* Variables CSS */
+:root {
+    --primary-color: #007bff; /* Bleu vif */
+    --secondary-color: #6c757d; /* Gris doux */
+    --accent-color: #28a745; /* Vert */
+    --background-light: #f8f9fa; /* Arrière-plan très clair */
+    --background-dark: #343a40; /* Arrière-plan sombre */
+    --text-color: #343a40; /* Texte foncé */
+    --text-light: #f8f9fa; /* Texte clair */
+    --card-bg: #ffffff; /* Fond de carte blanc */
+    --border-color: #e9ecef; /* Couleur de bordure */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08); /* Ombre légère */
+    --transition-speed: 0.3s ease;
+}
+
+/* --- Global Styles --- */
+.container {
+    max-width: 1200px; /* Largeur maximale pour les grands écrans */
+    margin: 0 auto;
+    padding: 0 20px; /* Marge intérieure pour éviter que le contenu ne touche les bords */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-light);
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Empêche le défilement horizontal indésirable */
+}
+
+/* Utile pour empêcher le défilement du corps lorsque le menu mobile/chatbot est ouvert */
+body.no-scroll {
+    overflow: hidden;
+}
+
+section {
+    padding: 60px 0; /* Espacement vertical pour chaque section */
+    text-align: center;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color var(--transition-speed), transform var(--transition-speed);
+    cursor: pointer; /* Indique que le bouton est cliquable */
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #218838;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* --- Header Styles --- */
+.main-header {
+    background-color: var(--card-bg);
+    box-shadow: var(--shadow-light);
+    position: sticky; /* Fait que l'en-tête reste en haut à la barre de défilement */
+    top: 0;
+    z-index: 100; /* Assure que l'en-tête est au-dessus des autres contenus */
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+}
+
+.main-header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin: 0;
+    text-decoration: none; /* Supprime le soulignement du lien */
+}
+
+.logo-img {
+    max-height: 40px; /* Ajustez la taille selon vos besoins */
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; /* Affiche les liens en ligne par défaut */
+}
+
+.main-nav ul li {
+    margin-left: 20px;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 600;
+    transition: color var(--transition-speed);
+    padding: 5px 0; /* Ajoute du rembourrage pour une meilleure zone de clic */
+    display: block; /* Rend le lien cliquable sur toute la largeur de son conteneur */
+}
+
+.main-nav ul li a:hover {
+    color: var(--primary-color);
+}
+
+/* Bouton du menu mobile (hamburger) */
+.menu-toggle {
+    display: none; /* Masqué sur le bureau */
+    font-size: 1.8em;
+    cursor: pointer;
+    color: var(--primary-color);
+    background: none;
+    border: none;
+    padding: 0;
+    z-index: 101; /* Assure que le bouton est au-dessus de la navigation ouverte */
+}
+
+/* --- Hero Section Styles --- */
+.hero-section {
+    background: linear-gradient(to right, var(--primary-color), #4CAF50); /* Dégradé de couleurs */
+    color: var(--text-light);
+    padding: 80px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 500px;
+    text-align: center;
+}
+
+.hero-section .container {
+    display: flex;
+    flex-direction: row; /* Par défaut côte à côte */
+    align-items: center;
+    justify-content: space-around;
+    gap: 40px; /* Espace entre le contenu et l'image */
+}
+
+.hero-content {
+    max-width: 50%; /* Prise de 50% de la largeur par défaut */
+    text-align: left;
+}
+
+.hero-content h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.hero-image {
+    max-width: 40%; /* Prise de 40% de la largeur par défaut */
+    text-align: center;
+}
+
+.chatbot-animation-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer; /* Indique que c'est cliquable */
+    padding: 20px; /* Ajoute un peu d'espace autour du robot */
+    border-radius: 10px;
+    transition: background-color 0.3s ease;
+}
+.chatbot-animation-placeholder:hover {
+    background-color: rgba(0, 0, 0, 0.03); /* Léger survol */
+}
+
+/* --- Animations pour l'image du robot --- */
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.02); opacity: 0.95; }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.animated-robot-image {
+    max-width: 100%; /* S'assure que l'image reste dans son conteneur */
+    height: auto; /* Maintient le ratio d'aspect */
+    display: block;
+    margin: 0 auto; /* Centre l'image */
+    animation: pulse 2s infinite ease-in-out, float 3s infinite ease-in-out 0.5s;
+}
+
+/* --- Features Section Styles --- */
+.features-section {
+    background-color: var(--background-light);
+}
+
+.features-section h3, .health-info-preview-section h3 {
+    font-size: 2.2em;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 280px min par colonne */
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.feature-card {
+    background-color: var(--card-bg);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    text-decoration: none;
+    color: var(--text-color);
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 3em;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.feature-card h4 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.feature-card p {
+    font-size: 1em;
+    opacity: 0.9;
+}
+
+/* --- Health Info Section Styles --- */
+.health-info-preview-section {
+    background-color: #e9f7ff; /* Légèrement teinté pour contraster */
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 40px;
+    padding: 0 20px;
+}
+
+.health-article-card {
+    background-color: var(--card-bg);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    text-align: left;
+    transition: transform var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+.health-article-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.health-article-card h5 {
+    font-size: 1.3em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.health-article-card p {
+    font-size: 0.95em;
+    margin-bottom: 15px;
+}
+
+.read-more {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color var(--transition-speed);
+}
+
+.read-more:hover {
+    color: #1e7e34;
+}
+
+/* --- Footer Styles --- */
+.main-footer {
+    background-color: var(--background-dark);
+    color: var(--text-light);
+    padding: 30px 0;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.main-footer .container {
+    display: flex;
+    flex-direction: column; /* Par défaut en colonne sur mobile */
+    align-items: center;
+    justify-content: center;
+}
+
+.main-footer p {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: var(--text-light);
+    text-decoration: none;
+    margin: 0 10px;
+    transition: color var(--transition-speed);
+}
+
+.footer-links a:hover {
+    color: var(--primary-color);
+}
+
+/* --- Chatbot FAB & Overlay Styles --- */
+.chatbot-fab {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8em;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    z-index: 1000;
+}
+
+.chatbot-fab:hover {
+    transform: scale(1.1);
+    background-color: #0056b3;
+}
+
+.chatbot-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    opacity: 0;
+    visibility: hidden; /* Cacher initialement */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.chatbot-overlay.active {
+    opacity: 1;
+    visibility: visible; /* Afficher quand actif */
+}
+
+.chatbot-popup {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    width: 90%;
+    max-width: 450px;
+    height: 80vh;
+    max-height: 700px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: translateY(20px); /* Animation au début */
+    opacity: 0; /* Cacher au début */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.chatbot-overlay.active .chatbot-popup {
+    transform: translateY(0); /* Ramener à la position normale */
+    opacity: 1; /* Afficher */
+}
+
+.chatbot-popup .chat-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chatbot-popup .chat-header .close-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.chatbot-popup .chat-header .close-button:hover {
+    transform: rotate(90deg);
+}
+
+.chatbot-popup iframe {
+    border: none;
+    width: 100%;
+    flex-grow: 1; /* L'iframe prendra l'espace restant */
+}
+
+/* --- Responsive Media Queries --- */
+
+/* Pour les écrans plus petits que 992px (tablettes et petits ordinateurs portables) */
+@media (max-width: 992px) {
+    .hero-section .container {
+        flex-direction: column; /* Empile le contenu et l'image */
+        text-align: center;
+    }
+
+    .hero-content {
+        max-width: 80%; /* Occupe plus de largeur sur les tablettes */
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .hero-content h2 {
+        font-size: 2.2em;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+    }
+
+    .hero-image {
+        max-width: 60%; /* L'image peut être plus grande */
+    }
+
+    .feature-grid, .info-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Plus petites colonnes */
+    }
+}
+
+/* Pour les écrans plus petits que 768px (smartphones et petites tablettes) */
+@media (max-width: 768px) {
+    .main-header .container {
+        flex-direction: row; /* Garde le logo et le hamburger en ligne */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .main-nav {
+        display: none; /* Masque la navigation par défaut sur mobile */
+        flex-direction: column;
+        position: absolute;
+        top: 70px; /* Ajuste en fonction de la hauteur de l'en-tête */
+        left: 0;
+        width: 100%;
+        background-color: var(--card-bg);
+        box-shadow: var(--shadow-light);
+        padding: 20px 0;
+        border-top: 1px solid var(--border-color);
+        animation: slideDown 0.3s ease-out forwards; /* Animation d'ouverture */
+    }
+
+    .main-nav.active {
+        display: flex; /* Affiche la navigation quand active */
+    }
+
+    @keyframes slideDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    .main-nav ul {
+        flex-direction: column;
+        width: 100%;
+        align-items: center; /* Centre les liens dans le menu déroulant */
+    }
+
+    .main-nav ul li {
+        margin: 10px 0; /* Espacement vertical entre les liens */
+        width: 90%; /* Pour que les liens ne touchent pas les bords */
+        text-align: center;
+    }
+
+    .main-nav ul li a {
+        padding: 10px 0;
+        border-bottom: 1px solid var(--border-color); /* Séparateur pour les liens */
+    }
+    .main-nav ul li:last-child a {
+        border-bottom: none; /* Pas de bordure pour le dernier lien */
+    }
+
+    .menu-toggle {
+        display: block; /* Affiche l'icône hamburger */
+    }
+
+    .hero-section {
+        padding: 60px 0;
+        min-height: auto; /* Hauteur automatique pour les petits écrans */
+    }
+
+    .hero-content {
+        max-width: 90%; /* Presque toute la largeur */
+        margin-bottom: 30px;
+    }
+
+    .hero-content h2 {
+        font-size: 1.8em;
+    }
+
+    .hero-content p {
+        font-size: 1em;
+    }
+
+    .hero-image {
+        max-width: 70%;
+    }
+
+    .features-section h3, .health-info-preview-section h3 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .feature-grid, .info-grid {
+        grid-template-columns: 1fr; /* Une seule colonne sur les téléphones */
+        padding: 0 15px;
+    }
+
+    .feature-card, .health-article-card {
+        padding: 20px;
+    }
+
+    .chatbot-fab {
+        width: 50px;
+        height: 50px;
+        font-size: 1.5em;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .chatbot-popup {
+        width: 95%;
+        height: 90vh;
+    }
+
+    .main-footer .container {
+        padding: 0 15px;
+    }
+    .footer-links a {
+        margin: 0 5px; /* Moins d'espace entre les liens du footer */
+    }
+}
+
+/* Pour les très petits écrans (iPhone 5/SE, etc.) */
+@media (max-width: 480px) {
+    .main-header .logo {
+        font-size: 1.3em;
+    }
+
+    .hero-content h2 {
+        font-size: 1.6em;
+    }
+
+    .hero-content p {
+        font-size: 0.9em;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.9em;
+    }
+
+    .hero-image {
+        max-width: 80%;
+    }
+
+    .features-section h3, .health-info-preview-section h3 {
+        font-size: 1.6em;
+    }
+
+    .feature-icon {
+        font-size: 2.5em;
+    }
+
+    .feature-card h4 {
+        font-size: 1.3em;
+    }
+}

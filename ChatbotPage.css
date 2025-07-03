@@ -1,0 +1,235 @@
+/* Variables CSS - Ces variables devraient idéalement être dans un fichier global CSS */
+:root {
+    --primary-color: #007bff; /* Bleu vif */
+    --secondary-color: #6c757d; /* Gris doux */
+    --accent-color: #28a745; /* Vert */
+    --background-light: #f8f9fa; /* Arrière-plan très clair */
+    --background-dark: #343a40; /* Arrière-plan sombre */
+    --text-color: #343a40; /* Texte foncé */
+    --text-light: #f8f9fa; /* Texte clair */
+    --card-bg: #ffffff; /* Fond de carte blanc */
+    --border-color: #e9ecef; /* Couleur de bordure */
+    --shadow-light: 0 4px 12px rgba(0, 0, 0, 0.08); /* Ombre légère */
+    --transition-speed: 0.3s ease;
+
+    --bot-message-bg: #e0f7fa; /* Fond de message du bot */
+    --user-message-bg: var(--primary-color); /* Fond de message de l'utilisateur */
+    --user-message-text: var(--text-light);
+    --quick-reply-bg: #f0f2f5;
+    --quick-reply-hover-bg: #e2e4e8;
+}
+
+/* Styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Les styles 'body' et '.container' sont généralement pour le layout global de l'app.
+   Dans React, vous les appliqueriez via un composant de layout ou un fichier CSS global.
+   Pour ce composant spécifique, je vais les adapter à un conteneur React. */
+
+.chatbot-page-container {
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-light);
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - var(--header-height, 0px) - var(--footer-height, 0px)); /* Ajuste si vous avez header/footer */
+    padding: 20px 0; /* Ajout d'un padding pour un meilleur espacement */
+    width: 100%;
+    max-width: 1200px; /* Aligné avec .container */
+    margin: 0 auto; /* Centre le conteneur principal */
+}
+
+
+/* Chatbot Container */
+.chatbot-container {
+    flex-grow: 1; /* Permet au contenu de s'étirer */
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 30px auto; /* Centre le conteneur du chatbot */
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow-light);
+    overflow: hidden;
+    height: calc(100vh - 180px); /* Ajuste la hauteur pour qu'il soit visible */
+    min-height: 500px;
+    width: 100%; /* S'assure qu'il prend toute la largeur disponible dans son parent */
+}
+
+.chat-header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 15px 20px;
+    font-size: 1.2em;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.chat-header .back-button {
+    position: absolute;
+    left: 20px;
+    background: none;
+    border: none;
+    color: var(--text-light);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: transform var(--transition-speed);
+}
+
+.chat-header .back-button:hover {
+    transform: translateX(-5px);
+}
+
+
+.chat-messages {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--background-light);
+}
+
+.message-bubble {
+    max-width: 80%;
+    padding: 10px 15px;
+    border-radius: 18px;
+    line-height: 1.4;
+    word-wrap: break-word;
+    font-size: 0.95em;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.bot-message {
+    background-color: var(--bot-message-bg);
+    align-self: flex-start;
+    border-bottom-left-radius: 4px;
+}
+
+.user-message {
+    background-color: var(--user-message-bg);
+    color: var(--user-message-text);
+    align-self: flex-end;
+    border-bottom-right-radius: 4px;
+}
+
+.message-timestamp {
+    font-size: 0.7em;
+    color: var(--secondary-color);
+    margin-top: 5px;
+    text-align: right;
+}
+.bot-message .message-timestamp {
+    text-align: left;
+}
+
+
+.quick-replies {
+    padding: 15px 20px;
+    background-color: var(--card-bg);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.quick-reply-button {
+    background-color: var(--quick-reply-bg);
+    border: 1px solid var(--border-color);
+    padding: 10px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9em;
+    color: var(--text-color);
+    transition: background-color var(--transition-speed), transform 0.1s ease;
+    white-space: nowrap; /* Empêche le texte de se casser sur plusieurs lignes */
+    text-align: center;
+}
+
+.quick-reply-button:hover {
+    background-color: var(--quick-reply-hover-bg);
+    transform: translateY(-2px);
+}
+
+.chat-input {
+    display: flex;
+    padding: 15px 20px;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--card-bg);
+}
+
+.chat-input input[type="text"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    font-size: 1em;
+    outline: none;
+    transition: border-color var(--transition-speed);
+}
+
+.chat-input input[type="text"]:focus {
+    border-color: var(--primary-color);
+}
+
+.chat-input button {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: none;
+    border-radius: 20px;
+    padding: 10px 18px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color var(--transition-speed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chat-input button:hover {
+    background-color: #0056b3; /* Darker blue */
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main-nav ul { /* Ces styles sont pour le header, pas le chatbot */
+        flex-direction: column;
+        margin-top: 15px;
+    }
+    .main-nav ul li { /* Ces styles sont pour le header, pas le chatbot */
+        margin: 10px 0;
+    }
+    .main-header .container { /* Ces styles sont pour le header, pas le chatbot */
+        flex-direction: column;
+    }
+    .chatbot-container {
+        margin: 20px 10px;
+        height: calc(100vh - 140px);
+    }
+    .chat-messages {
+        padding: 15px;
+    }
+    .message-bubble {
+        max-width: 90%;
+    }
+    .quick-replies {
+        flex-direction: column;
+        padding: 10px;
+    }
+    .quick-reply-button {
+        width: 100%;
+        padding: 12px 15px;
+    }
+}
